@@ -7,8 +7,8 @@ import (
 	pathutil "path"
 	"strconv"
 
-	"github.com/drone-plugins/drone-gcs-cache/storage/gcs"
 	"github.com/drone/drone-cache-lib/storage"
+	"github.com/hvalle/drone-gcs-cache/storage/gcs"
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
 )
