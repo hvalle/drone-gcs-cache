@@ -160,6 +160,9 @@ func run(c *cli.Context) error {
 
 	// Get the root path prefix to place the cache files
 	root := c.GlobalString("bucket")
+	if len(root) == 0 {
+		return errors.New("No bucket specified")
+	}
 
 	// Get the path to place the cache files
 	path := c.GlobalString("path")
