@@ -2,7 +2,8 @@
 
 **This plugin is based on the [drone-s3-cache](https://github.com/drone-plugins/drone-s3-cache) plugin.**
 
-Drone plugin that allows you to cache directories within the build workspace, this plugin works with Google Cloud Storage only.
+Drone plugin that allows you to cache directories within the build workspace, this plugin works with Google Cloud Storage only.For the usage information and a listing of the available options please take a look at [the docs](http://plugins.drone.io/hvalle/drone-gcs-cache/).
+
 
 ## Build
 
