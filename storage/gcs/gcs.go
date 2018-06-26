@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"strings"
 
 	"google.golang.org/api/iterator"
@@ -88,11 +89,13 @@ func (s *gcStorage) Put(p string, src io.Reader) error {
 	log.Infof("Uploading to bucket %s at %s", bucketName, key)
 
 	if len(bucketName) == 0 || len(key) == 0 {
+		ioutil.ReadAll(src)
 		return fmt.Errorf("Invalid path %s", p)
 	}
 
 	bkt := s.client.Bucket(bucketName)
 	if _, err := bkt.Attrs(ctx); err != nil {
+		ioutil.ReadAll(src)
 		return err
 	}
 
@@ -104,6 +107,7 @@ func (s *gcStorage) Put(p string, src io.Reader) error {
 
 	numBytes, err := io.Copy(w, src)
 	if err != nil {
+		ioutil.ReadAll(src)
 		return err
 	}
 
