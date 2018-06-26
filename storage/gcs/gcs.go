@@ -32,7 +32,7 @@ type gcStorage struct {
 func New(opts *Options) (storage.Storage, error) {
 	ctx := context.Background()
 
-	creds, err := google.CredentialsFromJSON(ctx, []byte(opts.JSONKey), gcs.ScopeReadWrite)
+	creds, err := google.CredentialsFromJSON(ctx, []byte(opts.JSONKey), gcs.ScopeFullControl)
 	if err != nil {
 		return nil, err
 	}
@@ -114,6 +114,8 @@ func (s *gcStorage) Put(p string, src io.Reader) error {
 	if err := w.Close(); err != nil {
 		return err
 	}
+
+	log.Infof("Setting Content-Type of %s in %s", key, bucketName)
 
 	attrsToUpdate := gcs.ObjectAttrsToUpdate{ContentType: "application/tar"}
 	_, err = obj.Update(ctx, attrsToUpdate)
