@@ -32,6 +32,7 @@ Execute from the working directory:
 docker run --rm \
   -e PLUGIN_FLUSH=true \
   -e PLUGIN_JOSN_KEY="jsonkey" \
+  -e PLUGIN_BUCKET="yourbucket" \
   -v $(pwd):$(pwd) \
   -w $(pwd) \
   homerovalle/drone-gcs-cache
@@ -39,6 +40,7 @@ docker run --rm \
 docker run --rm \
   -e PLUGIN_RESTORE=true \
   -e PLUGIN_JOSN_KEY="jsonkey" \
+  -e PLUGIN_BUCKET="yourbucket" \
   -e DRONE_REPO_OWNER="foo" \
   -e DRONE_REPO_NAME="bar" \
   -e DRONE_COMMIT_BRANCH="test" \
@@ -46,15 +48,11 @@ docker run --rm \
   -w $(pwd) \
   homerovalle/drone-gcs-cache
 
-docker run -it --rm \
-  -v $(pwd):$(pwd) \
-  -w $(pwd) \
-  alpine:latest sh -c "mkdir -p cache && echo 'testing cache' >> cache/test && cat cache/test"
-
 docker run --rm \
   -e PLUGIN_REBUILD=true \
   -e PLUGIN_MOUNT=".bundler" \
   -e PLUGIN_JOSN_KEY="jsonkey" \
+  -e PLUGIN_BUCKET="yourbucket" \
   -e DRONE_REPO_OWNER="foo" \
   -e DRONE_REPO_NAME="bar" \
   -e DRONE_COMMIT_BRANCH="test" \
