@@ -30,14 +30,14 @@ type gcStorage struct {
 
 // New method creates an implementation of Storage with GCS as the backend.
 func New(opts *Options) (storage.Storage, error) {
-	auth, err := google.JWTConfigFromJSON([]byte(opts.JSONKey), gcs.ScopeFullControl)
+	ctx := context.Background()
+
+	creds, err := google.CredentialsFromJSON(ctx, []byte(opts.JSONKey), gcs.ScopeReadWrite)
 	if err != nil {
 		return nil, err
 	}
 
-	ctx := context.Background()
-	client, err := gcs.NewClient(ctx, option.WithTokenSource(auth.TokenSource(ctx)))
-
+	client, err := gcs.NewClient(ctx, option.WithCredentials(creds))
 	if err != nil {
 		return nil, err
 	}
