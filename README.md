@@ -1,5 +1,6 @@
 # drone-gcs-cache
 
+[![Drone Build](https://drone.hvalle.com/api/badges/hvalle/drone-gcs-cache/status.svg?branch=master)](https://drone.hvalle.com/api/badges/hvalle/drone-gcs-cache/status.svg?branch=master)
 [![Go Report](https://goreportcard.com/badge/github.com/hvalle/drone-gcs-cache)](https://goreportcard.com/report/github.com/hvalle/drone-gcs-cache)
 
 **This plugin is based on the [drone-s3-cache](https://github.com/drone-plugins/drone-s3-cache) plugin.**
