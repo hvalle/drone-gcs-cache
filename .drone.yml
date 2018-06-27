@@ -41,7 +41,6 @@ pipeline:
     group: docker
     repo: homerovalle/drone-gcs-cache
     auto_tag: true
-    auto_tag_suffix: linux-amd64
     dockerfile: Dockerfile
     when:
       event: [ push, tag ]
